@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGDB", "IGDB\IGDB.csproj", "{5BB0EF69-0AA7-4480-81A6-9ED4016920D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGDBTest", "IGDBTest\IGDBTest.csproj", "{47E12FAA-623F-448E-B1F6-33BDF8B7A4D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BB0EF69-0AA7-4480-81A6-9ED4016920D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BB0EF69-0AA7-4480-81A6-9ED4016920D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BB0EF69-0AA7-4480-81A6-9ED4016920D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BB0EF69-0AA7-4480-81A6-9ED4016920D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E12FAA-623F-448E-B1F6-33BDF8B7A4D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E12FAA-623F-448E-B1F6-33BDF8B7A4D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E12FAA-623F-448E-B1F6-33BDF8B7A4D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E12FAA-623F-448E-B1F6-33BDF8B7A4D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E75A0884-AB0C-48DF-8EAB-E62A8066AAB4}
+	EndGlobalSection
+EndGlobal
