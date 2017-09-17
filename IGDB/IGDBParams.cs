@@ -18,7 +18,7 @@ namespace IGDBLib
         /// <summary>
         /// Fields Params
         /// </summary>
-        public IGDBFields[] Fields { get; set; }
+        public IGDBFields[] Fields { get; private set; }
 
         public int Limit { get; set; } = 1;
 

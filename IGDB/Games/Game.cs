@@ -70,7 +70,6 @@ namespace IGDBLib.Games
         public List<GameMode> Modes { get; internal set; } = new List<GameMode>();
         [IGDBValue("player_perspectives")]
         public List<GamePerspective> Perspectives { get; internal set; } = new List<GamePerspective>();
-
         [IGDBValue("themes")]
         public List<GameTheme> Themes { get; internal set; } = new List<GameTheme>();
 

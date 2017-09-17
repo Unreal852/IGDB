@@ -17,17 +17,17 @@ namespace IGDBLib
         /// </summary>
         /// <param name="data">JSON data</param>
         /// <returns>Gales</returns>
-        public static List<T> ParseGameData<T>(string data)
+        public static List<T> ParseData<T>(string data)
         {
             List<JObject> tmpGames = JsonConvert.DeserializeObject<List<JObject>>(data);
             if (tmpGames?.Count > 0)
             {
-                var games = new List<T>();
-                var gameType = typeof(T);
-                var props = gameType.GetPropertiesByAttribute(typeof(IGDBValue));
+                List<T> games = new List<T>();
+                Type gameType = typeof(T);
+                List<PropertyInfo> props = gameType.GetPropertiesByAttribute(typeof(IGDBValue));
                 foreach (JObject obj in tmpGames)
                 {
-                    var game = Activator.CreateInstance<T>();
+                    T game = Activator.CreateInstance<T>();
                     foreach (PropertyInfo property in props)
                         FillProperty(obj, game, property);
                     games.Add(game);
@@ -53,9 +53,7 @@ namespace IGDBLib
                 if (values == null)
                     return;
                 if (propertyType.IsPrimitiveType())
-                {
-                    property.SetValue(obj, Convert.ChangeType(values[igdbValue.Value] == null ? values.ToString() : values[igdbValue.Value], propertyType));
-                }
+                    property.SetValue(obj, Convert.ChangeType(values[igdbValue.Value] ?? values.ToString(), propertyType));
                 else if (propertyType.IsEnum)
                 {
                     object igdbv = values[igdbValue.Value];
@@ -110,8 +108,7 @@ namespace IGDBLib
             }
             catch (Exception ex)
             {
-              //  Console.WriteLine(ex.Message);
-              //  Console.WriteLine(ex.StackTrace);
+
             }
         }
     }
