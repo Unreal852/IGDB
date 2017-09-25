@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IGDBLib.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -29,6 +30,15 @@ namespace IGDBLib
         public void SetFields(params IGDBFields[] fields)
         {
             Fields = fields;
+        }
+
+        /// <summary>
+        /// Set Fields by object properties ( properties must have the IGDBValue attribute set )
+        /// </summary>
+        /// <param name="obj">Object</param>
+        public void SetFields(Type obj)
+        {
+            Fields = TypeHelper.GetPropertiesFields(obj);
         }
 
         /// <summary>

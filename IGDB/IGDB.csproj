@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\IGDBValue.cs" />
-    <Compile Include="Converters\EnumConverters.cs" />
     <Compile Include="Extenders\DictionaryExts.cs" />
     <Compile Include="Extenders\JsonExts.cs" />
     <Compile Include="Games\Game.cs" />
@@ -61,6 +60,7 @@
     <Compile Include="Games\GameTheme.cs" />
     <Compile Include="Games\GameTimeToBeat.cs" />
     <Compile Include="Games\GameVideo.cs" />
+    <Compile Include="Helpers\TypeHelper.cs" />
     <Compile Include="Helpers\ReflectionHelper.cs" />
     <Compile Include="IGDB.cs" />
     <Compile Include="IGDBFields.cs" />

@@ -2,12 +2,12 @@
 {
     public enum GamePerspective
     {
-        AURAL,
-        BIRD_VIEW,
-        FIRST_PERSON,
-        THIRD_PERSON,
-        SIDE_VIEW,
-        TEXT,
-        VIRTUAL_REALITY
+        FIRST_PERSON = 1,
+        THIRD_PERSON = 2,
+        BIRD_VIEW = 3,
+        SIDE_VIEW = 4,
+        TEXT = 5,
+        AURAL = 6,
+        VIRTUAL_REALITY = 7,
     }
 }

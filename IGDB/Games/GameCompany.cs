@@ -1,9 +1,6 @@
 ﻿using IGDBLib.Attributes;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IGDBLib.Games
 {
@@ -54,5 +51,10 @@ namespace IGDBLib.Games
 
         [IGDBValue("logo")]
         public GameImage Logo { get; internal set; }
+
+        public async void FillInfos()
+        {
+            
+        }
     }
 }

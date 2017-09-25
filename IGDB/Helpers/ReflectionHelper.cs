@@ -47,7 +47,10 @@ namespace IGDBLib.Helpers
         /// <returns>TRUE if primitive otherwise FALSE</returns>
         public static bool IsPrimitiveType(this Type type)
         {
-            return type.IsPrimitive || PrimitiveType.Contains(type) || Convert.GetTypeCode(type) != TypeCode.Object || (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) && IsPrimitiveType(type.GetGenericArguments()[0]));
+            return type.IsPrimitive ||
+                PrimitiveType.Contains(type) ||
+                Convert.GetTypeCode(type) != TypeCode.Object ||
+                (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) && IsPrimitiveType(type.GetGenericArguments()[0]));
         }
     }
 }

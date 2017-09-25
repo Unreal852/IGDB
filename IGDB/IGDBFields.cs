@@ -3,7 +3,7 @@
 namespace IGDBLib
 {
     /// <summary>
-    /// IGDB Game Search field <see cref="https://igdb.github.io/api/endpoints/game/"/>
+    /// IGDB Search field <see cref="https://igdb.github.io/api/"/>
     /// </summary>
     public enum IGDBFields
     {

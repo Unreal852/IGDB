@@ -2,10 +2,10 @@
 {
     public enum GameMode
     {
-        SINGLEPLAYER,
-        CO_OPERATIVE,
-        MULTIPLAYER,
-        SPLIT_SCREEN,
-        MASSIVELY_MULTIPLAYER,
+        SINGLEPLAYER = 1,
+        CO_OPERATIVE = 2,
+        MULTIPLAYER = 3,
+        SPLIT_SCREEN = 4,
+        MASSIVELY_MULTIPLAYER = 5,
     }
 }

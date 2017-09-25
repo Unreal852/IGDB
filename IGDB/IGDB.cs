@@ -28,9 +28,6 @@ namespace IGDBLib
             {
                 RestResponse<string> response = await Get(url);
                 string responseBody = response.Body;
-                /*
-                if (responseBody.ToLower().Contains("authentification") && responseBody.ToLower().Contains("failed"))
-                    throw new AuthentificationFailedException(); */
                 List<T> objs = IGDBParser.ParseData<T>(responseBody);
                 if (objs != null && objs.Count > 0)
                     return objs[0];

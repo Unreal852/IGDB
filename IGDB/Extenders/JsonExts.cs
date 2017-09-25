@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace IGDBLib.Extenders
 {
@@ -31,18 +30,19 @@ namespace IGDBLib.Extenders
         {
             return JsonConvert.DeserializeObject(obj[value].ToString());
         }
-
-        private static Dictionary<string, object> ToDictionary(this JArray array)
+        
+        /// <summary>
+        /// Check if the given token is null or empty
+        /// </summary>
+        /// <param name="token">Token</param>
+        /// <returns>Is Null or Empty</returns>
+        public static bool IsNullOrEmpty(this JToken token)
         {
-            Dictionary<string, object> tmp = new Dictionary<string, object>();
-            foreach (JToken token in array)
-            {
-                JArray ja = token as JArray;
-                if (ja != null)
-                    tmp.Add(ToDictionary(ja));
-                tmp.Add(token.Path, token);
-            }
-            return tmp;
+            return (token == null) ||
+                   (token.Type == JTokenType.Array && !token.HasValues) ||
+                   (token.Type == JTokenType.Object && !token.HasValues) ||
+                   (token.Type == JTokenType.String && token.ToString() == String.Empty) ||
+                   (token.Type == JTokenType.Null);
         }
     }
 }
