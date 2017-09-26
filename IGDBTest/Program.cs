@@ -1,12 +1,8 @@
 ﻿using IGDBLib;
 using IGDBLib.Attributes;
 using IGDBLib.Games;
-using IGDBLib.Helpers;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace IGDBTest
 {
@@ -42,6 +38,7 @@ namespace IGDBTest
                 Write("Select the test method", ConsoleColor.Cyan);
                 Write("1. Game Infos", ConsoleColor.Yellow);
                 Write("2. Company Infos", ConsoleColor.Yellow);
+                Write("3. Engine Infos", ConsoleColor.Yellow);
 
                 switch (int.Parse(Console.ReadLine()))
                 {
@@ -51,11 +48,15 @@ namespace IGDBTest
                     case 2:
                         GetCompanyInfos();
                         break;
+                    case 3:
+                        GetEngineInfos();
+                        break;
                 }
             }
             catch(Exception ex)
             {
-                Console.Clear();
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
                 Menu();
             }
         }
@@ -65,35 +66,43 @@ namespace IGDBTest
         /// </summary>
         private static void GetGameInfos()
         {
-            Console.Clear();
-            Write("Enter the game name:", ConsoleColor.Green);
-            IGDBParams prms = new IGDBParams(); //Create Params Instance
-            prms.SetFields(typeof(CGame)); //Add IGDB Fields from the object, they also can be added individualy
-            //prms.SetFields(Enum.GetValues(typeof(IGDBFields)).Cast<IGDBFields>().ToArray()); //Add all IGDB Fields
-            CGame game = IGDB.GetGameInfos<CGame>(Console.ReadLine(), prms).Result; //Get games infos from IGDB
-            Write(" ");
-            Write($"ID: {game.ID}");
-            Write($"Name: {game.Name}");
-            Write("Genres:");
-            foreach (GameGenre genre in game.Genres)
-                Write($"     {genre.ToString()}");
-            Write("Modes: ");
-            foreach (GameMode mode in game.Modes)
-                Write($"     {mode.ToString()}");
-            Write("Genres: ");
-            foreach (GameTheme theme in game.Themes)
-                Write($"     {theme.ToString()}");
-            Write("ScreenShots: ");
-            foreach (GameImage img in game.ScreenShots)
-                Write($"     {img.URL}"); 
-            Write($"PEGI: {game.PEGI.Rating}");
-            Write(" ");
-            Write("------------------------------");
-            Write(" ");
-            Write("Press any key to return to menu", ConsoleColor.Yellow);
-            Console.ReadKey();
-            Console.Clear();
-            Menu();
+            try
+            {
+                Console.Clear();
+                Write("Enter the game name:", ConsoleColor.Green);
+                IGDBParams prms = new IGDBParams(); //Create Params
+                prms.SetFields(typeof(CGame)); //Add IGDB Fields from the object, they also can be added individualy
+                //prms.SetFields(Enum.GetValues(typeof(IGDBFields)).Cast<IGDBFields>().ToArray()); //Add all IGDB Fields
+                CGame game = IGDB.GetGameInfos<CGame>(Console.ReadLine(), prms).Result; //Get game infos from IGDB
+                Write(" ");
+                Write($"ID: {game.ID}");
+                Write($"Name: {game.Name}");
+                Write("Genres:");
+                foreach (GameGenre genre in game.Genres)
+                    Write($"     {genre.ToString()}");
+                Write("Modes: ");
+                foreach (GameMode mode in game.Modes)
+                    Write($"     {mode.ToString()}");
+                Write("Genres: ");
+                foreach (GameTheme theme in game.Themes)
+                    Write($"     {theme.ToString()}");
+                Write("ScreenShots: ");
+                foreach (GameImage img in game.ScreenShots)
+                    Write($"     {img.URL}");
+                Write($"PEGI: {game.PEGI.Rating}");
+                Write(" ");
+                Write("------------------------------");
+                Write(" ");
+                Write("Press any key to return to menu", ConsoleColor.Yellow);
+                Console.ReadKey();
+                Console.Clear();
+                Menu();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
         }
 
         /// <summary>
@@ -108,6 +117,25 @@ namespace IGDBTest
             Write($"ID: {company.ID}");
             Write($"Name: {company.Name}");
             Write($"Website: {company.Website}");
+            Write(" ");
+            Write("Press any key to return to menu");
+            Console.ReadKey();
+            Console.Clear();
+            Menu();
+        }
+
+        /// <summary>
+        /// Get Engine Infos
+        /// </summary>
+        private static void GetEngineInfos()
+        {
+            Console.Clear();
+            Write("Enter the engine ID", ConsoleColor.Green);
+            GameEngine engine = IGDB.GetEngineInfos(int.Parse(Console.ReadLine())).Result; //Get engine infos from IGDB
+            Write(" ");
+            Write($"ID: {engine.ID}");
+            Write($"Name: {engine.Name}");
+            Write($"Website: {engine.Url}");
             Write(" ");
             Write("Press any key to return to menu");
             Console.ReadKey();

@@ -51,10 +51,5 @@ namespace IGDBLib.Games
 
         [IGDBValue("logo")]
         public GameImage Logo { get; internal set; }
-
-        public async void FillInfos()
-        {
-            
-        }
     }
 }

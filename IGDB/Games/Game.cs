@@ -1,6 +1,5 @@
 ﻿using IGDBLib.Attributes;
 using System;
-using System.Collections.Generic;
 
 namespace IGDBLib.Games
 {
@@ -32,6 +31,12 @@ namespace IGDBLib.Games
         public Int64 Collection { get; internal set; }
         [IGDBValue("franchise")]
         public Int64 Franchise { get; internal set; }
+        [IGDBValue("developers")]
+        public Int64[] Developers { get; internal set; }
+        [IGDBValue("publishers")]
+        public Int64[] Publishers { get; internal set; }
+        [IGDBValue("game_engines")]
+        public Int64[] Engine { get; internal set; }
 
         [IGDBValue("hypes")]
         public int Hypes { get; internal set; }
@@ -60,26 +65,18 @@ namespace IGDBLib.Games
         [IGDBValue("cover")]
         public GameImage Cover { get; internal set; }
 
-        public GameEngine Engine { get; internal set; }
-
-        [IGDBValue("platforms")]
-        public List<GamePlatform> Platforms { get; internal set; } = new List<GamePlatform>();
         [IGDBValue("genres")]
-        public List<GameGenre> Genres { get; internal set; } = new List<GameGenre>();
+        public GameGenre[] Genres { get; internal set; }
         [IGDBValue("game_modes")]
-        public List<GameMode> Modes { get; internal set; } = new List<GameMode>();
+        public GameMode[] Modes { get; internal set; }
         [IGDBValue("player_perspectives")]
-        public List<GamePerspective> Perspectives { get; internal set; } = new List<GamePerspective>();
+        public GamePerspective[] Perspectives { get; internal set; }
         [IGDBValue("themes")]
-        public List<GameTheme> Themes { get; internal set; } = new List<GameTheme>();
+        public GameTheme[] Themes { get; internal set; }
 
-        [IGDBValue("developers")]
-        public List<GameCompany> Developers { get; internal set; } = new List<GameCompany>();
-        [IGDBValue("publishers")]
-        public List<GameCompany> Publishers { get; internal set; } = new List<GameCompany>();
         [IGDBValue("screenshots")]
-        public List<GameImage> ScreenShots { get; internal set; } = new List<GameImage>();
+        public GameImage[] ScreenShots { get; internal set; }
         [IGDBValue("videos")]
-        public List<GameVideo> Videos { get; internal set; } = new List<GameVideo>();
+        public GameVideo[] Videos { get; internal set; }
     }
 }

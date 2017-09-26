@@ -17,7 +17,7 @@ namespace IGDBLib
         public static string USER_APICAST_URL = "";
 
         /// <summary>
-        /// Get infos by the given URL
+        /// Create rest request 
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
         /// <param name="url"></param>
@@ -36,7 +36,7 @@ namespace IGDBLib
         }
 
         /// <summary>
-        /// Get games infos from game name
+        /// Get games infos by name
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
         /// <param name="gameName">Game Name</param>
@@ -53,7 +53,7 @@ namespace IGDBLib
         }
 
         /// <summary>
-        /// Get games infos from game name
+        /// Get games infos by name
         /// </summary>
         /// <param name="gameName">Game Name</param>
         /// <param name="args">Query Args</param>
@@ -64,7 +64,7 @@ namespace IGDBLib
         }
 
         /// <summary>
-        /// Get company infos from IGDB's ID
+        /// Get company infos by id
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
         /// <param name="companyID">Company ID</param>
@@ -76,13 +76,35 @@ namespace IGDBLib
         }
 
         /// <summary>
-        /// Get company infos from IGDB's ID
+        /// Get company infos by id
         /// </summary>
         /// <param name="companyID">Company ID</param>
         /// <returns>Company Infos</returns>
         public static async Task<GameCompany> GetCompanyInfos(int companyID)
         {
             return await GetCompanyInfos<GameCompany>(companyID);
+        }
+        
+        /// <summary>
+        /// Get engine infos by id
+        /// </summary>
+        /// <typeparam name="T">Type</typeparam>
+        /// <param name="engineID">Engine ID</param>
+        /// <returns>Engine Infos</returns>
+        public static async Task<T> GetEngineInfos<T>(int engineID)
+        {
+            string url = $"{USER_APICAST_URL}/game_engines/{engineID.ToString()}";
+            return await GetInfos<T>(url);
+        }
+
+        /// <summary>
+        /// Get engine infos by id
+        /// </summary>
+        /// <param name="engineID">Engine ID</param>
+        /// <returns>Engine Info</returns>
+        public static async Task<GameEngine> GetEngineInfos(int engineID)
+        {
+            return await GetEngineInfos<GameEngine>(engineID);
         }
 
         /// <summary>

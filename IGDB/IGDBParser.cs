@@ -63,7 +63,7 @@ namespace IGDBLib
                 {
                     JToken token = values[igdbValue.Value];
                     int enumIndex = -1;
-                    if (int.TryParse(token.ToString(), out enumIndex))
+                    if (int.TryParse(token?.ToString(), out enumIndex))
                         property.SetValue(obj, Convert.ChangeType(enumIndex, propertyType));
                 }
                 else if (propertyType.IsList())
@@ -145,7 +145,6 @@ namespace IGDBLib
             int index = 0;
             if (arrayContentType.IsPrimitiveType())
             {
-                Console.WriteLine("Primitive " + arrayContentType.ToString());
                 array = Array.CreateInstance(arrayContentType, token.Values().Count());
                 foreach (JToken jt in token.Values())
                 {
@@ -188,6 +187,8 @@ namespace IGDBLib
         /// <param name="propertyType">Type</param>
         private static void FillObject(JToken token, object obj, Type propertyType)
         {
+            if (token.IsNullOrEmpty())
+                return;
             List<PropertyInfo> properties = propertyType.GetPropertiesByAttribute(typeof(IGDBValue));
             foreach (PropertyInfo property in properties)
                 FillProperty(token.ToObject<JObject>(), obj, property);
